@@ -1,9 +1,10 @@
 language: c
 
 sudo: required
-before_script:
-  - sudo apt-get update
-  - sudo apt-get install openscad
+addons:
+  apt:
+    packages:
+    - openscad
 script:
   - openscad -D '$plustterminal_drilling=true'  -D '$minusterminal_drilling=true'  -o battery_dummy-1.stl battery_dummy.scad
   - openscad -D '$plustterminal_drilling=true'  -D '$minusterminal_drilling=false' -o battery_dummy-2.stl battery_dummy.scad
