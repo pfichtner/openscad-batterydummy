@@ -6,9 +6,9 @@ addons:
     packages:
     - openscad
 script:
-  - openscad -D '$plustterminal_drilling=true'  -D '$minusterminal_drilling=true'  -o battery_dummy-1.stl battery_dummy.scad
-  - openscad -D '$plustterminal_drilling=true'  -D '$minusterminal_drilling=false' -o battery_dummy-2.stl battery_dummy.scad
-  - openscad -D '$plustterminal_drilling=false' -D '$minusterminal_drilling=true'  -o battery_dummy-3.stl battery_dummy.scad
+  - openscad -D plustterminal_drilling=true  -D minusterminal_drilling=true  -o battery_dummy-1.stl battery_dummy.scad
+  - openscad -D plustterminal_drilling=true  -D minusterminal_drilling=false -o battery_dummy-2.stl battery_dummy.scad
+  - openscad -D plustterminal_drilling=false -D minusterminal_drilling=true  -o battery_dummy-3.stl battery_dummy.scad
 install: true
 before_deploy:
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"

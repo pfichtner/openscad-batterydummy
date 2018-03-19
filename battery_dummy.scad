@@ -16,10 +16,10 @@ $staerke2_bottom=2;
 $m1_bottom=2.5; // was 3
 $m2_bottom=5.5; // was 5
 
-$plustterminal_drilling=false;
+plustterminal_drilling=false;
 $plusterminal_height=2;
 $plusterminal_r=2.5;
-$minusterminal_drilling=true;
+minusterminal_drilling=true;
 
 
 $inner_heigth=$outer_heigth-$staerke_top-$staerke1_bottom-$staerke2_bottom;
@@ -43,7 +43,7 @@ difference() {
 translate([0, 0, $staerke_top-($staerke_top+$staerke1_bottom+$staerke2_bottom)/2]) {
     union() {
     cylinder(h=$outer_heigth, r=$outer_radius, center=true);
-    if (!$plusterminal_drilling) {
+    if (!plusterminal_drilling) {
         translate([0,0, $outer_heigth/2])
         cylinder(h=$plusterminal_height, r=$plusterminal_r, center=true);
     }
@@ -58,10 +58,10 @@ difference() {
   translate([0, $strainrelief_height/2-$inner_radius, 0]) 
   strainrelief(h=$strainrelief_height, l=$strainrelief_length, t=$strainrelief_thickness);
 }
-if ($plusterminal_drilling) {
+if (plusterminal_drilling) {
   translate([0, 0, $inner_heigth/2]) cylinder(h=$staerke_top, r=$m_top, center=false);
 }
-if ($minusterminal_drilling) {
+if (minusterminal_drilling) {
   union() {
     translate([0, 0, -$inner_heigth/2-$staerke1_bottom]) cylinder(h=$staerke1_bottom, r=$m1_bottom, center=false);
     translate([0, 0, -$inner_heigth/2-$staerke2_bottom-$staerke1_bottom]) cylinder(h=$staerke2_bottom, r1=$m2_bottom, r2=$m1_bottom, center=false
