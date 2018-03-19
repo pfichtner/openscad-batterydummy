@@ -9,4 +9,12 @@ script:
 
 install: true
 
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: token-env-name
+  keep-history: true
+  on:
+    branch: master
+
 
