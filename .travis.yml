@@ -1,20 +1,17 @@
 sudo: required
 before_script:
-  - sudo apt-get update
-  - sudo apt-get install openscad
-
-script: 
-- openscad -D '$plustterminal_drilling=true'  -D '$minusterminal_drilling=false' -o battery_dummy-1.stl battery_dummy.scad 
-- openscad -D '$plustterminal_drilling=false' -D '$minusterminal_drilling=true'  -o battery_dummy-2.stl battery_dummy.scad 
-
+- sudo apt-get update
+- sudo apt-get install openscad
+script:
+- openscad -D '$plustterminal_drilling=true'  -D '$minusterminal_drilling=false' -o
+  battery_dummy-1.stl battery_dummy.scad
+- openscad -D '$plustterminal_drilling=false' -D '$minusterminal_drilling=true'  -o
+  battery_dummy-2.stl battery_dummy.scad
 install: true
-
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $token-env-name
-  keep-history: true
+  provider: releases
+  api_key:
+    secure: Y5DESClfI/MgJ7hOvUjpDnidNCbMggBQx8NAKigBqIZDB0wb6d9Yxu8hhEFaipPpgyq46LqT/8/5Fxiwh5OizQyyEx9yOtsMxm+vZVUXlR0a9S7mSar/F6ER4GFHxzY1tQTM3HvWWAN8x2kHOqcw69NlJoSw/qujAW6wubVvzr4E1WRfE4ixY0vsx0Cus9QgpaINiKnb+iqELONcIMmUTkqhzFLAWACnmGHb99kRNY5o0EOEE/FEalEN/2NmZy4n9g1222Dt2ENZrkbJ8OL9HlL+6qF8uXTsfQzTIGjucVFoPttmoddygm5aaMooQ6a6+8tpZZQCLXd0z2VlttRvjsoDaD4zoalIlUq1kgwXBMb/ZKL2ol2fVHOLevhiROVJdVB2QHs0706/GdtOr1ywahwCDk9LEgJVy6Mf08ZooI6VWjL/7/TjnZTgOPA7JIXDMuq2OYwc1Mrn1RmUBnw/jLfnXK0vTJayrIoL55Fd5RmPHjk0Q8p87SXeDlOE0OcbS3iNmK34xCvkbEPsEoy5W9t7aNEDbaVa0uCnDzgw2XLHLBiVlGg2IswRelIbha4o6LBSdRAmG5th50thevgug3jHEMspyK7LBmNBsuzzNmPJM83IdkXx/OzeqQhUsu+nlWL9M4zVQ1HGELcLdslAi8ZoPvIiPV26Kyh9TFHWEn8=
+  file: battery_dummy-1.stl
   on:
-    branch: master
-
-
+    repo: pfichtner/openscad-batterydummy
