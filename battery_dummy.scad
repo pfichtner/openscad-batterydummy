@@ -1,15 +1,24 @@
 $fn=64;
 
-$outer_heigth=50;
+// defaults to aa battery
+$outer_heigth=49.5;
 $outer_radius=7;
-$inner_radius=5;
+
+if ($type == "AA") {
+    include <aa-battery.scad>
+}
+if ($type == "AAA") {
+    include <aaa-battery.scad>
+}
+
+$inner_radius=$outer_radius - 2;
 
 $strainrelief_thickness=3;
 $strainrelief_height=3;
 $strainrelief_length=6;
 
 $plusterminal_h=3;
-$plusterminal_drilling=false;
+$plusterminal_drilling=true;
 $plusterminal_r=2.5;
 // without drilling a pin is added
 $plusterminal_pin_h=3;
