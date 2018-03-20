@@ -1,8 +1,8 @@
 $fn=64;
 
-$outer_heigth=50;
-$outer_radius=7;
-$inner_radius=5;
+$outer_heigth=100;
+$outer_radius=14;
+$inner_radius=10;
 
 $strainrelief_thickness=3;
 $strainrelief_height=3;
