@@ -5,7 +5,7 @@ addons:
   apt:
     packages:
     - openscad
-script: export-stl.sh
+script: ./scripts/export-stl.sh
 install: true
 before_deploy:
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
