@@ -20,5 +20,6 @@ deploy:
     - battery_dummy-aa-m.stl
     - battery_dummy-aaa-pm.stl
     - battery_dummy-aaa-p.stl
+    - battery_dummy-aaa-m.stl
   on:
     repo: pfichtner/openscad-batterydummy
