@@ -28,7 +28,7 @@ $minusterminal_h1=3;
 $minusterminal_h2=2;
 $minusterminal_drilling=true;
 $minusterminal_r1=2.8; // was 3
-$minusterminal_r2=6;   // was 5
+$minusterminal_r2=6.2;   // was 5
 
 
 $inner_heigth=$outer_heigth-$plusterminal_h-$minusterminal_h1-$minusterminal_h2;
