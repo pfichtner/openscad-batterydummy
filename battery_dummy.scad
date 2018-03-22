@@ -3,14 +3,6 @@ $fn=64;
 // defaults to aa battery
 $outer_heigth=49.5;
 $outer_radius=7;
-
-if ($type == "AA") {
-    include <aa-battery.scad>
-}
-if ($type == "AAA") {
-    include <aaa-battery.scad>
-}
-
 $inner_radius=$outer_radius - 2;
 
 $strainrelief_thickness=3;
@@ -81,3 +73,4 @@ if ($minusterminal_drilling) {
 }
 
 }
+
