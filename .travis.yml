@@ -1,9 +1,11 @@
 language: c
 sudo: required
-before_script:
-- sudo add-apt-repository ppa:openscad/releases -y
-- sudo apt-get update -q
-- sudo apt-get install openscad
+addons:
+  apt:
+    sources:
+    - sourceline: 'ppa:openscad/releases'
+    packages:
+    - openscad
 script: "./scripts/export-stl.sh"
 install: true
 before_deploy:
