@@ -2,6 +2,7 @@ name: Build and Release
 
 on:
   push:
+  pull_request:
 
 jobs:
   build:
@@ -18,6 +19,12 @@ jobs:
 
     - name: Run Build Script
       run: ./scripts/export-stl.sh
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4.0.0
+      with:
+        name: target
+        path: "target/*"
 
   deploy:
     needs: build
@@ -39,14 +46,12 @@ jobs:
         draft: false
         prerelease: false
 
-    - name: Upload Release Assets
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1
+    - name: Create Release
+      id: create_release
+      uses: ncipollo/release-action@6c75be85e571768fa31b40abf38de58ba0397db5 # v1.13.0
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        artifacts: "target/*"
+        makeLatest: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: target/*
-        asset_name: ${{ env.BUILD_RUN_ID }}-${{ github.sha }}-${{ env.ASSET_NAME }}
-        asset_content_type: application/octet-stream
-
